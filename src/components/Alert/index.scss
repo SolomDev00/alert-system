@@ -1,0 +1,74 @@
+// ** Default
+$defaultBg: rgb(29 31 32 / 71%);
+$defaultColor: #c8c8c8;
+$defaultBorder: #c8c8c8;
+
+// ** Info
+$infoBg: rgb(100 108 255 / 8%);
+$infoColor: #bcc0ff;
+$infoBorder: rgb(102, 110, 255);
+
+// ** Warning
+$warningBg: rgb(255 197 23 / 5%);
+$warningColor: #fcd253;
+$warningBorder: rgba(255, 213, 0, 0.793);
+
+// ** Error
+$errorBg: rgb(192 29 29 / 15%);
+$errorColor: #ef8d8dfa;
+$errorBorder: rgba(255, 25, 0, 0.322);
+
+// ** Success
+$successBg: rgba(246, 238, 9, 0.127);
+$successColor: #7acf58d6;
+$successBorder: rgba(0, 255, 0, 0.322);
+
+@mixin alert($name, $borderColor, $bgColor, $color) {
+  .#{$name} {
+    border: 2px dashed $borderColor;
+    border-radius: 0.8rem;
+    padding: 1.3rem;
+    background-color: $bgColor;
+    color: $color;
+    margin: 50px 0;
+
+    .alert-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+
+      .alert-title {
+        display: flex;
+        align-items: center;
+
+        h4 {
+          font-weight: 400;
+          font-size: 1.2rem;
+        }
+      }
+      .alert-icon {
+        margin-right: 0.8rem;
+        cursor: pointer;
+      }
+      .alert-close {
+        cursor: pointer;
+      }
+    }
+    p {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.5rem;
+      font-weight: 500;
+    }
+    a {
+      color: #9499ff;
+      font-weight: 600;
+    }
+  }
+}
+
+@include alert("alert-default", $defaultBorder, $defaultBg, $defaultColor);
+@include alert("alert-info", $infoBorder, $infoBg, $infoColor);
+@include alert("alert-warning", $warningBorder, $warningBg, $warningColor);
+@include alert("alert-error", $errorBorder, $errorBg, $errorColor);
+@include alert("alert-sccess", $successBorder, $successBg, $successColor);
